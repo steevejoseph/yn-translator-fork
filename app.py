@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, Response, render_template
 from openai import OpenAI
+from flask_cors import CORS
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -10,6 +11,7 @@ apiKey = os.environ.get("YN_KEY")
 client = OpenAI(api_key=apiKey)
 import json
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def handle_home_route():
