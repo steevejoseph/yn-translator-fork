@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, render_template
 from openai import OpenAI
 
 from dotenv import load_dotenv
@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def handle_home_route():
-    return "<span>Welcome to API</span>"
+    return render_template("index.html")
 
 @app.route("/chat", methods=["POST"])
 def post_to_open_api():
@@ -42,10 +42,7 @@ def post_to_open_api():
     )
 
     gpt_response = completion.choices[0].message.content
-    
-    print(f"From CHAT GPT: {gpt_response}")
 
-    # print(completion)
     res = json.dumps({ 
                       "message": gpt_response, 
                       "original_content": content

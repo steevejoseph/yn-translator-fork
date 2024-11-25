@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YN Translator</title>
+    <style>
+        /* Center content horizontally and vertically */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+            font-family: monospace;
+            white-space: pre-wrap; /* To preserve line breaks and spaces */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Submit Content and Role</h2>
+
+        <form id="dataForm">
+            <label for="content">Content:</label>
+            <input type="text" id="content" name="content" required>
+            <br>
+
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role" required>
+            <br>
+
+            <button type="button" onclick="submitData()">Submit</button>
+        </form>
+
+        <!-- Text area for displaying the message returned from the POST request -->
+        <label for="responseMessage">Response Message:</label>
+        <textarea id="responseMessage" readonly></textarea>
+    </div>
+
+    <script>
+        function submitData() {
+            // Get values from the input fields
+            const content = document.getElementById('content').value;
+            const role = document.getElementById('role').value;
+
+            // Check if both fields have values
+            if (!content || !role) {
+                alert("Please fill in both content and role.");
+                return;
+            }
+
+            // Create the data object
+            const data = {
+                content: content,
+                role: role
+            };
+
+            // Make the POST request using fetch
+            fetch('http://localhost:8080/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Call the function to simulate gradual message typing
+                typeResponseGradually(data.message || 'No message returned');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('There was an error submitting the data.');
+            });
+        }
+
+        // Function to simulate the gradual typing of the response
+        function typeResponseGradually(message) {
+            const textarea = document.getElementById('responseMessage');
+            textarea.value = ''; // Clear any previous text
+            let index = 0;
+            const speed = 50; // Speed of typing effect in milliseconds
+
+            function typeChar() {
+                if (index < message.length) {
+                    textarea.value += message.charAt(index);
+                    index++;
+                    setTimeout(typeChar, speed); // Recursively call to add the next character
+                }
+            }
+
+            typeChar(); // Start the typing effect
+        }
+    </script>
+</body>
+</html>
