@@ -11,3 +11,18 @@ class ChatData:
 
     def __str__(self):
         return f"MyClass({', '.join(f'{key}={value}' for key, value in self.__dict__.items())})"
+
+
+class UserData:
+    email: str
+    first_name: str
+    last_name: str
+    password: str
+    created_at: str
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def __str__(self):
+        return f"MyClass({', '.join(f'{key}={value}' for key, value in self.__dict__.items())})"
