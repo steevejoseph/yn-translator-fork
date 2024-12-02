@@ -4,8 +4,8 @@ import json
 from openai import OpenAI
 import os
 
-from mongoDB import add_chat
-from type_defs import ChatData
+from mongoDB import add_chat, add_user
+from type_defs import ChatData, UserData
 
 
 from dotenv import load_dotenv
@@ -23,6 +23,23 @@ CORS(app)
 @app.route("/")
 def handle_home_route():
     return render_template("index.html")
+
+
+@app.route("/user", methods=["POST"])
+def create_user():
+    # print(request.get_json())
+    u_data = request.get_json()
+    u_data_object = UserData(**u_data)
+    print(u_data_object)
+    add_user(u_data_object)
+
+    res = json.dumps(
+        {"message": f"Sucessfully added user", "original_content": json.dumps(u_data)}
+    )
+
+    return Response(res, status=200, mimetype="application/json")
+
+    return "OK"
 
 
 @app.route("/chat", methods=["POST"])
