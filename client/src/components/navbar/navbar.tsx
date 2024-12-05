@@ -21,7 +21,6 @@ export default function Navbar() {
           <SignedOut>
             <Link to="/sign-in">Sign In</Link>
             <Link to="/sign-up">Sign Up</Link>
-            <Link to="/sign-in">Sign In</Link>
           </SignedOut>
         </div>
       </nav>{" "}
