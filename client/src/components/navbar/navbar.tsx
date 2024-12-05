@@ -10,9 +10,9 @@ export default function Navbar() {
           Bridge
         </Link>
         <div className="nav-links">
-          <Link to="/about">About</Link>
-          <Link to="/pricing">Pricing</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="#/about">About</Link>
+          <Link to="#/pricing">Pricing</Link>
+          <Link to="#/contact">Contact</Link>
 
           <SignedIn>
             <Link to="/chat">Chat</Link>
