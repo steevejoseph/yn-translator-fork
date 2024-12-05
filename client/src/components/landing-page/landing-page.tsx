@@ -3,12 +3,13 @@ import "./landing-page.css";
 
 const LandingPage = () => {
   return (
-    <div className="container">
+    <div className="landing-container">
       <video
         src={video}
         autoPlay
         playsInline
         muted
+        loop
         className="video-background"
       />
       <div className="centered-text">Tomorrow is now.</div>
