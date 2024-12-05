@@ -98,54 +98,60 @@ const Chat = () => {
   }
 
   return (
-    <div className="chat-container">
-      <h1 className="chat-title">AI Chat Interface</h1>
+    <div className="chat-page">
+      <div className="chat-container">
+        <h1 className="chat-title">AI Chat Interface</h1>
 
-      <div className="chat-form">
-        <div className="chat-input-group">
-          <label className="chat-label">Content</label>
-          <input
-            className="chat-input"
-            type="text"
-            placeholder="Type your message here..."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-        </div>
+        <div className="chat-form">
+          <div className="chat-input-group">
+            <label className="chat-label">Content</label>
+            <input
+              className="chat-input"
+              type="text"
+              placeholder="Type your message here..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
 
-        <div className="chat-input-group">
-          <label className="chat-label">Role</label>
-          <input
-            className="chat-input"
-            type="text"
-            placeholder="e.g., Helpful Assistant, Teacher, Expert..."
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          />
-        </div>
+          <div className="chat-input-group">
+            <label className="chat-label">Role</label>
+            <input
+              className="chat-input"
+              type="text"
+              placeholder="e.g., Helpful Assistant, Teacher, Expert..."
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            />
+          </div>
 
-        <div className="chat-button-container">
-          <button className="chat-button" onClick={onPing} disabled={isLoading}>
-            {isLoading ? "Pinging..." : "Ping"}
-          </button>
+          <div className="chat-button-container">
+            <button
+              className="chat-button"
+              onClick={onPing}
+              disabled={isLoading}
+            >
+              {isLoading ? "Pinging..." : "Ping"}
+            </button>
 
-          <button
-            className="chat-button primary"
-            onClick={submitData}
-            disabled={isLoading}
-          >
-            {isLoading ? "Sending..." : "Submit"}
-          </button>
-        </div>
+            <button
+              className="chat-button primary"
+              onClick={submitData}
+              disabled={isLoading}
+            >
+              {isLoading ? "Sending..." : "Submit"}
+            </button>
+          </div>
 
-        <div className="chat-response-group">
-          <label className="chat-label">Response</label>
-          <textarea
-            className="chat-textarea"
-            readOnly
-            value={response}
-            placeholder="AI response will appear here..."
-          />
+          <div className="chat-response-group">
+            <label className="chat-label">Response</label>
+            <textarea
+              className="chat-textarea"
+              readOnly
+              value={response}
+              placeholder="AI response will appear here..."
+            />
+          </div>
         </div>
       </div>
     </div>

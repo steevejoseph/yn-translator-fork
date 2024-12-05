@@ -1,7 +1,13 @@
+.chat-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  background-color: #242424;
+}
+
 .chat-container {
-  max-width: 800px;
-  margin: 4rem auto;
-  padding: 2.5rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2.5rem 3.5rem;
   background-color: rgba(30, 30, 30, 0.95);
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -124,8 +130,8 @@
 
 @media (max-width: 768px) {
   .chat-container {
-    margin: 2rem 1rem;
-    padding: 1.5rem;
+    margin: 2rem 1.5rem;
+    padding: 2rem 1.5rem;
   }
   
   .chat-button-container {
