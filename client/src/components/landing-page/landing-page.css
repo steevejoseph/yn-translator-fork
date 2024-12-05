@@ -1,0 +1,24 @@
+/* landing-page.css */
+.container {
+  position: relative;
+}
+
+.video-background {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro",
+    "Helvetica Neue", Arial, sans-serif;
+}

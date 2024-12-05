@@ -1,4 +1,11 @@
-from flask import Flask, request, jsonify, Response, render_template
+from flask import (
+    Flask,
+    request,
+    jsonify,
+    Response,
+    render_template,
+    send_from_directory,
+)
 from flask_cors import CORS
 import json
 from openai import OpenAI
@@ -16,13 +23,18 @@ load_dotenv()
 apiKey = os.environ.get("YN_KEY")
 client = OpenAI(api_key=apiKey)
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="dist", static_url_path="")
 CORS(app)
+
+
+@app.route("/api/ping", methods=["GET"])
+def handle_ping():
+    return Response(json.dumps({"message": "pong"}), status=200)
 
 
 @app.route("/")
 def handle_home_route():
-    return render_template("index.html")
+    return send_from_directory(app.static_folder, "index.html")
 
 
 @app.route("/user", methods=["POST"])
