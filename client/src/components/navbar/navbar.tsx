@@ -15,6 +15,7 @@ export default function Navbar() {
           <Link to="/contact">Contact</Link>
 
           <SignedIn>
+            <Link to="/chat">Chat</Link>
             <UserButton />
           </SignedIn>
           <SignedOut>
