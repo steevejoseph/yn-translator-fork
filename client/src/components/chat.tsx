@@ -98,59 +98,57 @@ const Chat = () => {
   }
 
   return (
-    <>
-      <div className="container">
-        <h2>Welcome </h2>
+    <div className="chat-container">
+      <h1 className="chat-title">AI Chat Interface</h1>
 
-        <form>
-          <label htmlFor="content">Content:</label>
+      <div className="chat-form">
+        <div className="chat-input-group">
+          <label className="chat-label">Content</label>
           <input
+            className="chat-input"
             type="text"
-            required
+            placeholder="Type your message here..."
+            value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <br />
+        </div>
 
-          <label htmlFor="role">Role:</label>
+        <div className="chat-input-group">
+          <label className="chat-label">Role</label>
           <input
+            className="chat-input"
             type="text"
-            required
+            placeholder="e.g., Helpful Assistant, Teacher, Expert..."
+            value={role}
             onChange={(e) => setRole(e.target.value)}
           />
+        </div>
 
-          <br />
+        <div className="chat-button-container">
+          <button className="chat-button" onClick={onPing} disabled={isLoading}>
+            {isLoading ? "Pinging..." : "Ping"}
+          </button>
 
-          <div
-            className="button-container"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space between",
-            }}
+          <button
+            className="chat-button primary"
+            onClick={submitData}
+            disabled={isLoading}
           >
-            <button
-              type="button"
-              style={{ margin: "1em" }}
-              onClick={() => onPing()}
-            >
-              {isLoading ? "Pinging..." : "Ping"}
-            </button>
+            {isLoading ? "Sending..." : "Submit"}
+          </button>
+        </div>
 
-            <button
-              type="button"
-              style={{ margin: "1em" }}
-              onClick={() => submitData()}
-            >
-              {isLoading ? "Loading..." : "Submit"}
-            </button>
-          </div>
-        </form>
-
-        {/* <!-- Text area for displaying the message returned from the POST request --> */}
-        <label htmlFor="responseMessage">Response Message:</label>
-        <textarea readOnly value={response}></textarea>
+        <div className="chat-response-group">
+          <label className="chat-label">Response</label>
+          <textarea
+            className="chat-textarea"
+            readOnly
+            value={response}
+            placeholder="AI response will appear here..."
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
