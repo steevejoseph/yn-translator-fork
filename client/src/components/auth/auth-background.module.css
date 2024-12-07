@@ -1,4 +1,4 @@
-.auth-background {
+.authBackground {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.auth-video-background {
+.authVideoBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -17,7 +17,7 @@
   object-fit: cover;
 }
 
-.auth-overlay {
+.authOverlay {
   position: absolute;
   top: 0;
   left: 0;

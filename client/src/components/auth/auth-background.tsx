@@ -1,18 +1,18 @@
 import video from "../../assets/videos/landing.mp4";
-import "./auth-background.css";
+import styles from "./auth-background.module.css";
 
 const AuthBackground = () => {
   return (
-    <div className="auth-background">
+    <div className={styles.authBackground}>
       <video
         src={video}
         autoPlay
         playsInline
         muted
         loop
-        className="auth-video-background"
+        className={styles.authVideoBackground}
       />
-      <div className="auth-overlay"></div>
+      <div className={styles.authOverlay}></div>
     </div>
   );
 };

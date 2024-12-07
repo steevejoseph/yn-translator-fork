@@ -1,10 +1,10 @@
-.chat-page {
+.chatPage {
   padding-top: 80px;
   min-height: 100vh;
   background-color: #242424;
 }
 
-.chat-container {
+.chatContainer {
   max-width: 700px;
   margin: 2rem auto;
   padding: 2.5rem 3.5rem;
@@ -14,7 +14,7 @@
   backdrop-filter: blur(10px);
 }
 
-.chat-title {
+.chatTitle {
   color: #fff;
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -22,28 +22,28 @@
   font-weight: 600;
 }
 
-.chat-form {
+.chatForm {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding: 0 1rem;
 }
 
-.chat-input-group {
+.chatInputGroup {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   max-width: 100%;
 }
 
-.chat-label {
+.chatLabel {
   color: #fff;
   font-size: 0.95rem;
   font-weight: 500;
   margin-left: 0.25rem;
 }
 
-.chat-input {
+.chatInput {
   width: 100%;
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.05);
@@ -55,24 +55,24 @@
   box-sizing: border-box;
 }
 
-.chat-input:focus {
+.chatInput:focus {
   outline: none;
   border-color: #646cff;
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-.chat-input::placeholder {
+.chatInput::placeholder {
   color: rgba(255, 255, 255, 0.3);
 }
 
-.chat-button-container {
+.chatButtonContainer {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
   width: 100%;
 }
 
-.chat-button {
+.chatButton {
   flex: 1;
   padding: 0.875rem 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -85,30 +85,30 @@
   transition: all 0.3s ease;
 }
 
-.chat-button:hover {
+.chatButton:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: #646cff;
 }
 
-.chat-button.primary {
+.chatButton.primary {
   background-color: #646cff;
   border-color: #646cff;
 }
 
-.chat-button.primary:hover {
+.chatButton.primary:hover {
   background-color: #535bf2;
 }
 
-.chat-button:disabled {
+.chatButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.chat-response-group {
+.chatResponseGroup {
   margin-top: 1rem;
 }
 
-.chat-textarea {
+.chatTextarea {
   width: 100%;
   min-height: 200px;
   padding: 1rem;
@@ -122,27 +122,27 @@
   transition: all 0.3s ease;
 }
 
-.chat-textarea:focus {
+.chatTextarea:focus {
   outline: none;
   border-color: #646cff;
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-.chat-textarea::placeholder {
+.chatTextarea::placeholder {
   color: rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 768px) {
-  .chat-container {
+  .chatContainer {
     margin: 2rem 1rem;
     padding: 1.5rem;
   }
   
-  .chat-button-container {
+  .chatButtonContainer {
     flex-direction: column;
   }
   
-  .chat-button {
+  .chatButton {
     width: 100%;
   }
-}
+} 

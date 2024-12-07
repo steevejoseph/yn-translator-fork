@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./chat.css";
+import styles from "./chat.module.css";
 
 const FLASK_URL = "http://localhost:8080";
 // const FLASK_URL = 'https://yn-translator.onrender.com/chat';
@@ -98,15 +98,15 @@ const Chat = () => {
   }
 
   return (
-    <div className="chat-page">
-      <div className="chat-container">
-        <h1 className="chat-title">AI Chat Interface</h1>
+    <div className={styles.chatPage}>
+      <div className={styles.chatContainer}>
+        <h1 className={styles.chatTitle}>AI Chat Interface</h1>
 
-        <div className="chat-form">
-          <div className="chat-input-group">
-            <label className="chat-label">Content</label>
+        <div className={styles.chatForm}>
+          <div className={styles.chatInputGroup}>
+            <label className={styles.chatLabel}>Content</label>
             <input
-              className="chat-input"
+              className={styles.chatInput}
               type="text"
               placeholder="Type your message here..."
               value={content}
@@ -114,10 +114,10 @@ const Chat = () => {
             />
           </div>
 
-          <div className="chat-input-group">
-            <label className="chat-label">Role</label>
+          <div className={styles.chatInputGroup}>
+            <label className={styles.chatLabel}>Role</label>
             <input
-              className="chat-input"
+              className={styles.chatInput}
               type="text"
               placeholder="e.g., Helpful Assistant, Teacher, Expert..."
               value={role}
@@ -125,9 +125,9 @@ const Chat = () => {
             />
           </div>
 
-          <div className="chat-button-container">
+          <div className={styles.chatButtonContainer}>
             <button
-              className="chat-button"
+              className={styles.chatButton}
               onClick={onPing}
               disabled={isLoading}
             >
@@ -135,7 +135,7 @@ const Chat = () => {
             </button>
 
             <button
-              className="chat-button primary"
+              className={`${styles.chatButton} ${styles.primary}`}
               onClick={submitData}
               disabled={isLoading}
             >
@@ -143,10 +143,10 @@ const Chat = () => {
             </button>
           </div>
 
-          <div className="chat-response-group">
-            <label className="chat-label">Response</label>
+          <div className={styles.chatResponseGroup}>
+            <label className={styles.chatLabel}>Response</label>
             <textarea
-              className="chat-textarea"
+              className={styles.chatTextarea}
               readOnly
               value={response}
               placeholder="AI response will appear here..."

@@ -1,18 +1,18 @@
 import video from "../../assets/videos/landing.mp4";
-import "./landing-page.css";
+import styles from "./landing-page.module.css";
 
 const LandingPage = () => {
   return (
-    <div className="landing-container">
+    <div className={styles.landingContainer}>
       <video
         src={video}
         autoPlay
         playsInline
         muted
         loop
-        className="video-background"
+        className={styles.videoBackground}
       />
-      <div className="centered-text">Tomorrow is now.</div>
+      <div className={styles.centeredText}>Tomorrow is now.</div>
     </div>
   );
 };

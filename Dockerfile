@@ -1,21 +1,40 @@
-FROM python:3.8-slim
-
-# Install Node.js and pnpm
-RUN apt-get update && apt-get install -y curl
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install -g pnpm
-
-WORKDIR /app
-COPY . .
-
-# Install client dependencies
+# Build stage for React
+FROM node:18 AS client-build
 WORKDIR /app/client
+COPY client/package*.json ./
+RUN npm install -g pnpm
+RUN pnpm config set nodeLinker hoisted
 RUN pnpm install
+COPY client/ ./
 
-# Back to main directory and install Python dependencies
+# Create a script to generate env config at runtime
+RUN echo "window.ENV = JSON.parse(process.env.VITE_ENV || '{}');" > public/env-config.js
+
+RUN pnpm build
+
+# Production stage
+FROM python:3.8-slim
 WORKDIR /app
-RUN pip3 install -r requirements.txt
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+COPY --from=client-build /app/client/dist /app/client/dist
+
+# Create entrypoint script
+RUN echo '#!/bin/sh\n\
+echo "window.ENV = {\n\
+  VITE_CLERK_PUBLISHABLE_KEY: \"$VITE_CLERK_PUBLISHABLE_KEY\",\n\
+  VITE_YN_KEY: \"$VITE_YN_KEY\"\n\
+};" > /app/client/dist/env-config.js\n\
+\n\
+flask run --host=0.0.0.0 --port=8080' > /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=production
 
 EXPOSE 8080
-CMD ["python3", "app.py"]
+ENTRYPOINT ["/entrypoint.sh"]

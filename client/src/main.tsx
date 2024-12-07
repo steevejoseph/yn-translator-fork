@@ -1,12 +1,12 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import "./index.module.css";
+import "./globals.css";
 // import App from './App.tsx'
 // import {ClerkProvider} from "@clerk/clerk-react";
 
 // import React from 'react'
 // import ReactDOM from 'react-dom/client'
-import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the layouts
@@ -20,6 +20,7 @@ import SignInPage from "./routes/sign-in";
 import SignUpPage from "./routes/sign-up";
 import DashboardPage from "./routes/dashboard";
 import Chat from "./components/chat";
+import { getEnvVar } from "./utils/env";
 // import InvoicesPage from './routes/dashboard.invoices'
 
 const router = createBrowserRouter([
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
 ]);
 
 // Import your Publishable Key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const PUBLISHABLE_KEY = getEnvVar("VITE_CLERK_PUBLISHABLE_KEY");
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Add your Clerk Publishable Key to the .env.local file");
