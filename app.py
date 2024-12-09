@@ -45,10 +45,11 @@ def create_checkout_session():
         'currency': 'usd',
         'product_data': {
           'name': 'Donation',
+          "images": ["https://media.licdn.com/dms/image/v2/D4E03AQGBXcircCwpDg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721261093039?e=1739404800&v=beta&t=xsEFaSGzDAPELkrwT-31oTF4fFUkP6Emfjqf7dq5T-4"]
         },
-        'unit_amount': 2000,
+        'unit_amount': 100,
       },
-      'quantity': 1,
+      'quantity': 1, 
     }],
     mode='payment',
     success_url=f'{REACT_URL}/success',
