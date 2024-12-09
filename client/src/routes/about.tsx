@@ -3,12 +3,12 @@ import aboutPic from "@/assets/images/about-pic.jpg";
 const AboutPage = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <h1 className="text-4xl font-bold text-center mb-8">About</h1>
+      <h1 className="text-4xl font-bold text-center mb-8 text-white">About</h1>
 
-      <div className="flex flex-col md:flex-row items-center gap-8 bg-white p-8 rounded-lg shadow-md border border-indigo-200">
+      <div className="flex flex-col md:flex-row items-center gap-8 bg-gray-900 rounded-xl p-8 border border-indigo-500">
         {/* Text Container */}
-        <div className="md:w-1/2 space-y-4">
-          <p className="text-xl text-gray-800 leading-relaxed">
+        <div className="md:w-1/2">
+          <p className="text-xl text-gray-200 leading-relaxed">
             The app enables users to easily understand colloquial language
             through clear, accessible explanations.
           </p>
@@ -19,7 +19,7 @@ const AboutPage = () => {
           <img
             src={aboutPic}
             alt="About"
-            className="w-full max-h-[calc(100vh-12rem)] object-cover rounded-lg shadow-md"
+            className="w-full max-h-[calc(100vh-12rem)] object-cover rounded-xl"
           />
         </div>
       </div>
