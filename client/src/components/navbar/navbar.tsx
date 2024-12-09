@@ -10,7 +10,7 @@ export default function Navbar() {
           Bridge
         </Link>
         <div className={styles.navLinks}>
-          <Link to="#/about">About</Link>
+          <Link to="/about">About</Link>
           <Link to="#/pricing">Pricing</Link>
           <Link to="#/contact">Contact</Link>
 
