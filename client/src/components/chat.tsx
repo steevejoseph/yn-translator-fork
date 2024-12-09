@@ -38,7 +38,7 @@ const Chat = () => {
     };
 
     try {
-      const response = await fetch(FLASK_URL, {
+      const response = await fetch(`${FLASK_URL}/api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,28 +56,6 @@ const Chat = () => {
     }
 
     setIsLoading(false);
-
-    // fetch(FLASK_URL, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log('Success:', data);
-    //     setResponse(data.message)
-
-    //     typeResponseGradually(data.message || 'No message returned');
-    //   })
-    //   .catch((error) => {
-
-    //     console.error('Error:', error);
-    //     alert('There was an error submitting the data.');
-    //   }).finally(() => {
-    //     setIsLoading(false)
-    //   })
   };
   function typeResponseGradually(message: string) {
     setResponse(""); // Clear any previous text

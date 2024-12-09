@@ -49,7 +49,7 @@ def create_user():
     return "OK"
 
 
-@app.route("/chat", methods=["POST"])
+@app.route("/api/chat", methods=["POST"])
 def post_to_open_api():
     data = request.get_json()
     print("data:", data)
