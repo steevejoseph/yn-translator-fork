@@ -2,7 +2,7 @@ import aboutPic from "@/assets/images/about-pic.jpg";
 
 const AboutPage = () => {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="container mx-auto px-4 py-8 max-w-6xl mt-16">
       <h1 className="text-4xl font-bold text-center mb-8 text-white">About</h1>
 
       <div className="flex flex-col md:flex-row items-center gap-8 bg-black rounded-xl p-8 border border-indigo-500">
