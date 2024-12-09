@@ -11,7 +11,7 @@ export default function Navbar() {
         </Link>
         <div className={styles.navLinks}>
           <Link to="/about">About</Link>
-          <Link to="#/pricing">Pricing</Link>
+          <Link to="/pricing">Pricing</Link>
           <Link to="#/contact">Contact</Link>
 
           <SignedIn>

@@ -16,7 +16,8 @@ import DashboardLayout from "./layouts/dashboard-layout";
 // Import the components
 import IndexPage from "./routes";
 import ContactPage from "./routes/contact";
-import AboutPage from "./routes/about.tsx";
+import AboutPage from "./routes/about";
+import PricingPage from "./routes/pricing";
 import SignInPage from "./routes/sign-in";
 import SignUpPage from "./routes/sign-up";
 import DashboardPage from "./routes/dashboard";
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       { path: "/sign-up/*", element: <SignUpPage /> },
       { path: "/chat", element: <Chat /> },
       { path: "/about", element: <AboutPage /> },
+      { path: "/pricing", element: <PricingPage /> },
 
       {
         element: <DashboardLayout />,

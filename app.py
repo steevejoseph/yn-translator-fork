@@ -1,5 +1,6 @@
 from flask import (
     Flask,
+    redirect,
     request,
     jsonify,
     Response,
@@ -26,6 +27,35 @@ client = OpenAI(api_key=apiKey)
 app = Flask(__name__, static_folder="client/dist", static_url_path="/")
 CORS(app)
 
+
+import stripe
+
+stripe_api_key = os.environ.get("STRIPE_API_KEY")
+
+if not stripe_api_key :
+    raise ValueError("No Stripe api key found in environ variables :(")
+
+stripe.api_key = stripe_api_key
+REACT_URL = "http://localhost:5173"
+@app.route('/api/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+  session = stripe.checkout.Session.create(
+    line_items=[{
+      'price_data': {
+        'currency': 'usd',
+        'product_data': {
+          'name': 'Donation',
+        },
+        'unit_amount': 2000,
+      },
+      'quantity': 1,
+    }],
+    mode='payment',
+    success_url=f'{REACT_URL}/success',
+    cancel_url=f'{REACT_URL}/cancel',
+  )
+
+  return redirect(session.url, code=303)
 
 @app.route("/api/ping", methods=["GET"])
 def handle_ping():
