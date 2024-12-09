@@ -23,6 +23,7 @@ import SignUpPage from "./routes/sign-up";
 import DashboardPage from "./routes/dashboard";
 import Chat from "./components/chat";
 import { getEnvVar } from "./utils/env";
+import SuccessPage from "./routes/success";
 // import InvoicesPage from './routes/dashboard.invoices'
 
 const router = createBrowserRouter([
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       { path: "/chat", element: <Chat /> },
       { path: "/about", element: <AboutPage /> },
       { path: "/pricing", element: <PricingPage /> },
+      { path: "/success", element: <SuccessPage /> },
 
       {
         element: <DashboardLayout />,
