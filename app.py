@@ -52,11 +52,21 @@ def create_checkout_session():
       'quantity': 1, 
     }],
     mode='payment',
-    success_url=f'{REACT_URL}/success',
+    success_url=f'{REACT_URL}/success?session_id={{CHECKOUT_SESSION_ID}}',
     cancel_url=f'{REACT_URL}/cancel',
   )
 
   return redirect(session.url, code=303)
+
+@app.route('/api/session-status', methods=['GET'])
+def session_status():
+  session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
+  print(session)
+  with open("./session.json",'w') as f:
+    f.write(str(session))
+  cust_name = session.customer_details.name
+  return jsonify(status=session.status, customer_email=session.customer_details.email,session=session, cust_name=cust_name)
+
 
 @app.route("/api/ping", methods=["GET"])
 def handle_ping():
