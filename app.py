@@ -21,6 +21,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+from send_email import send_email 
 
 apiKey = os.environ.get("YN_KEY")
 client = OpenAI(api_key=apiKey)
@@ -88,8 +89,15 @@ def create_user():
 
     return "OK"
 @app.route("/api/contact", methods=["POST"])
-def send_email():
+def handle_send_email():
   print(f"We're en route:{request.get_json()}")
+  data = request.get_json()
+  
+  fullName = data.get("name")
+  message = data.get("message")
+  message = f"New contact email from {fullName}: {message}"
+  
+  send_email(data.get("email"), message)
   response = json.dumps({"message": "OK"})
   return Response(response, status=200, mimetype="application/json")
 
