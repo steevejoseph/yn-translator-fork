@@ -12,7 +12,7 @@ export default function Navbar() {
         <div className={styles.navLinks}>
           <Link to="/about">About</Link>
           <Link to="/pricing">Pricing</Link>
-          <Link to="#/contact">Contact</Link>
+          <Link to="/contact">Contact</Link>
 
           <SignedIn>
             <Link to="/chat">Chat</Link>

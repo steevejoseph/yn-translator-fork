@@ -62,8 +62,6 @@ def create_checkout_session():
 def session_status():
   session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
   print(session)
-  with open("./session.json",'w') as f:
-    f.write(str(session))
   cust_name = session.customer_details.name
   return jsonify(status=session.status, customer_email=session.customer_details.email,session=session, cust_name=cust_name)
 

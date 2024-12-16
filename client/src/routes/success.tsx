@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import { StripeSession } from "./types";
-
-let res = await fetch(`/api/session-status${window.location.search}`);
-const json = await res.json();
+import { useState } from "react";
 
 const SuccessPage = () => {
+  const [json, setJson] = useState({ cust_name: "" });
+  fetch(`/api/session-status${window.location.search}`)
+    .then((res) => res.json())
+    .then((json) => setJson(json));
+
   const firstName = json.cust_name.split(" ")[0];
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl mt-16">
