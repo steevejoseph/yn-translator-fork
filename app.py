@@ -12,6 +12,7 @@ import json
 from openai import OpenAI
 import os
 
+
 from mongoDB import add_chat, add_user
 from type_defs import ChatData, UserData
 
@@ -86,7 +87,11 @@ def create_user():
     return Response(res, status=200, mimetype="application/json")
 
     return "OK"
-
+@app.route("/api/contact", methods=["POST"])
+def send_email():
+  print(f"We're en route:{request.get_json()}")
+  response = json.dumps({"message": "OK"})
+  return Response(response, status=200, mimetype="application/json")
 
 @app.route("/api/chat", methods=["POST"])
 def post_to_open_api():
