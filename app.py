@@ -21,7 +21,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 from send_email import send_email 
+
+print(os.environ)
 
 apiKey = os.environ.get("YN_KEY")
 client = OpenAI(api_key=apiKey)
