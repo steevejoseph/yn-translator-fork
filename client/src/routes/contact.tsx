@@ -96,6 +96,7 @@ export default function ContactPage() {
             <input
               type="submit"
               className="text-xl bg-indigo-600 p-1 rounded-md"
+              disabled={true}
             />
           </form>
         </div>
