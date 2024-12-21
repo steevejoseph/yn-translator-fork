@@ -34,7 +34,7 @@ import stripe
 
 stripe_api_key = os.environ.get("STRIPE_API_KEY")
 
-if not stripe_api_key :
+if not stripe_api_key:
     raise ValueError("No Stripe api key found in environ variables :(")
 
 stripe.api_key = stripe_api_key
